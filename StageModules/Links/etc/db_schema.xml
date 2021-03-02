@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="cms_added_link" resource="default" engine="innodb" comment="CMS Added Links Table">
+        <column xsi:type="smallint" name="link_id" padding="6" unsigned="false" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="mediumtext" name="title" nullable="true" comment="Link Title"/>
+        <column xsi:type="mediumtext" name="url" nullable="false" comment="Link Url"/>
+        <column xsi:type="smallint" name="enabled" padding="6" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Enabled/Disabled Link Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Link Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Link Modification Time"/>
+        <index referenceId="CMS_ADDED_LINK_IDENTIFIER" indexType="btree">
+            <column name="link_id"/>
+        </index>
+    </table>
+    <table name="cms_added_link_relative_page" resource="default" engine="innodb"
+           comment="CMS Added Link Relative Page">
+        <column xsi:type="smallint" name="link_id" padding="6" unsigned="false" nullable="false" identity="false"
+                comment="Link ID"/>
+        <column xsi:type="smallint" name="page_id" padding="6" unsigned="false" nullable="false" identity="false"
+                comment="Page ID"/>
+        <column xsi:type="mediumtext" name="page_url" nullable="false" comment="Page Url"/>
+        <constraint xsi:type="foreign" referenceId="CMS_ADDED_LINK_RELATIVE_PAGE_PAGE_ID_CMS_ADDED_LINK_LINK_ID"
+                    table="cms_added_link_relative_page"
+                    column="link_id" referenceTable="cms_added_link" referenceColumn="link_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="CMS_ADDED_LINK_RELATIVE_PAGE_PAGE_ID_CMS_PAGE_PAGE_ID"
+                    table="cms_added_link_relative_page"
+                    column="page_id" referenceTable="cms_page" referenceColumn="page_id" onDelete="CASCADE"/>
+        <index referenceId="CMS_ADDED_LINK_RELATIVE_PAGE_LINK_ID" indexType="btree">
+            <column name="link_id"/>
+        </index>
+    </table>
+</schema>

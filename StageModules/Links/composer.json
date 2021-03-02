@@ -1,0 +1,14 @@
+{
+    "name": "StageModules/Links",
+    "description": "N/A",
+    "license": [],
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "authors": [],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "StageModules\\Links\\": ""
+        }
+    }
+}

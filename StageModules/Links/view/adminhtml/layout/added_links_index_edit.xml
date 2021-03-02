@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Edit Links</title>
+    </head>
+    <update handle="editor"/>
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="left">
+            <uiComponent name="cms_added_links_form"/>
+        </referenceContainer>
+
+    </body>
+</page>
