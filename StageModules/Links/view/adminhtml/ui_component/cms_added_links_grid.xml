@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">cms_added_links_grid_listing.cms_added_links_listing_data_source
+            <item name="provider" xsi:type="string">cms_added_links_grid.cms_added_links_grid_data_source
             </item>
             <!--            <item name="deps" xsi:type="string">cms_added_links_grid_listing.cms_added_links_listing_data_source</item>-->
         </item>
@@ -18,14 +18,14 @@
         </buttons>
         <spinner>links_columns</spinner>
         <deps>
-            <dep>cms_added_links_grid_listing.cms_added_links_listing_data_source</dep>
+            <dep>cms_added_links_grid.cms_added_links_grid_data_source</dep>
         </deps>
     </settings>
 
     <dataSource name="added_links_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">LinksGridDataProvider</argument>
-            <argument name="name" xsi:type="string">cms_added_links_listing_data_source</argument>
+            <argument name="name" xsi:type="string">cms_added_links_grid_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">link_id</argument>
             <argument name="requestFieldName" xsi:type="string">link_id</argument>
             <argument name="data" xsi:type="array">
@@ -105,7 +105,7 @@
                 <settings>
                     <callback>
                         <target>editSelected</target>
-                        <provider>cms_added_links_grid_listing.cms_added_links_listing_data_source</provider>
+                        <provider>cms_added_links_grid.cms_added_links_grid_data_source</provider>
                     </callback>
                     <type>edit</type>
                     <label translate="true">Edit</label>
@@ -120,7 +120,7 @@
             <item name="config" xsi:type="array">
                 <item name="storageConfig" xsi:type="array">
                     <item name="provider" xsi:type="string">
-                        cms_added_links_grid_listing.cms_added_links_listing_data_source.listing_top.bookmarks
+                        cms_added_links_grid.cms_added_links_grid_data_source.listing_top.bookmarks
                     </item>
                     <item name="namespace" xsi:type="string">current</item>
                 </item>
@@ -128,7 +128,7 @@
                     <item name="controlVisibility" xsi:type="boolean">true</item>
                     <item name="storageConfig" xsi:type="array">
                         <item name="provider" xsi:type="string">
-                            cms_added_links_grid_listing.cms_added_links_listing_data_source.listing_top.bookmarks
+                            cms_added_links_grid.cms_added_links_grid_data_source.listing_top.bookmarks
                         </item>
                         <item name="root" xsi:type="string">columns.${ $.index }</item>
                         <item name="namespace" xsi:type="string">current.${ $.storageConfig.root}</item>

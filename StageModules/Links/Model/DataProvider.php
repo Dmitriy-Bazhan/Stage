@@ -2,11 +2,21 @@
 
 namespace StageModules\Links\Model;
 
+use Magento\Framework\App\Request\DataPersistorInterface;
 use StageModules\Links\Model\ResourceModel\Link\CollectionFactory;
 
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    /**
+     * @var DataPersistorInterface
+     */
+    protected $dataPersistor;
+    /**
+     * @var CollectionFactory
+     */
+    private $collectionFactory;
+
     /**
      * @param string $name
      * @param string $primaryFieldName
@@ -22,7 +32,8 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         CollectionFactory $employeeCollectionFactory,
         array $meta = [],
         array $data = []
-    ) {
+    )
+    {
         $this->collection = $employeeCollectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
@@ -34,6 +45,28 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     public function getData()
     {
+        if (isset($this->loadedData)) {
+            return $this->loadedData;
+        }
+        $items = $this->collection->getItems();
+        /** @var \StageModules\Links\Model\Link $block */
+        foreach ($items as $block) {
+            $this->loadedData[$block->getId()] = $block->getData();
+        }
+
+//        $data = $this->dataPersistor->get('cms_added_link_form');
+//        if (!empty($data)) {
+//            $block = $this->collection->getNewEmptyItem();
+//            $block->setData($data);
+//            $this->loadedData[$block->getId()] = $block->getData();
+//            $this->dataPersistor->clear('cms_added_link_form');
+//        }
+
+        if (!empty($this->loadedData)) {
+            return $this->loadedData;
+        }
+
         return [];
     }
+
 }

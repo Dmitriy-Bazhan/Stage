@@ -39,7 +39,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="cms_added_links_listing_data_source" xsi:type="string">
+                <item name="cms_added_links_grid_data_source" xsi:type="string">
                     StageModules\Links\Model\ResourceModel\Link\Collection
                 </item>
             </argument>

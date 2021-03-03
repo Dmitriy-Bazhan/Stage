@@ -2,14 +2,38 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <title>Edit Links</title>
+        <title>Add Links</title>
     </head>
-    <update handle="editor"/>
+    update handle="editor"/>
     <update handle="styles"/>
     <body>
-            <referenceContainer name="left">
-                <uiComponent name="cms_added_links_form"/>
-            </referenceContainer>
+        <referenceContainer name="content">
 
+        </referenceContainer>
+
+        <referenceContainer name="left">
+            <block class="StageModules\Links\Block\Adminhtml\Links\View\Tab\Main" name="main">
+                <block class="StageModules\Links\Block\Adminhtml\Links\View\Tab\Form"
+                       name="cms_added_links.form.container"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">form_link</argument>
+                    <argument name="block" xsi:type="string">cms_added_links.form.container</argument>
+                </action>
+                <block class="StageModules\Links\Block\Adminhtml\Links\View\Tab\Relative"
+                       name="cms_added_links_form_relative_page.form.container"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">relative_page</argument>
+                    <argument name="block" xsi:type="string">cms_added_links_form_relative_page.form.container
+                    </argument>
+                </action>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="cms_added_links.form.container">
+            <uiComponent name="cms_added_links_form"/>
+        </referenceBlock>
+        <referenceBlock name="cms_added_links_form_relative_page.form.container">
+            <uiComponent name="cms_added_links_form_relative_page"/>
+        </referenceBlock>
     </body>
 </page>

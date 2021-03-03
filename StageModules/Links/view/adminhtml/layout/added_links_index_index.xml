@@ -6,7 +6,7 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="cms_added_links_grid_listing"/>
+            <uiComponent name="cms_added_links_grid"/>
         </referenceContainer>
     </body>
 </page>
