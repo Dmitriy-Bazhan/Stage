@@ -19,6 +19,14 @@ class Collection extends GridCollection implements SearchResultInterface
         $this->_init(Document::class, Page::class);
     }
 
+    protected function _initSelect()
+    {
+        parent::_initSelect();
+        $link = $_SESSION['link_id'];
+        $this->getSelect()->where("link_id = $link");
+        return $this;
+    }
+
     public function getAggregations()
     {
         return $this->aggregations;

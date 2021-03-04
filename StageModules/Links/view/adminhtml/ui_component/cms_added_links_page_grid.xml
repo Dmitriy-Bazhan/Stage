@@ -14,9 +14,26 @@
         </deps>
     </settings>
 
-    <dataSource name="added_links_data_source">
+<!--    <dataSource name="added_links_data_source">-->
+<!--        <argument name="dataProvider" xsi:type="configurableObject">-->
+<!--            <argument name="class" xsi:type="string">PageGridDataProvider</argument>-->
+<!--            <argument name="name" xsi:type="string">cms_added_links_page_grid_data_source</argument>-->
+<!--            <argument name="primaryFieldName" xsi:type="string">link_id</argument>-->
+<!--            <argument name="requestFieldName" xsi:type="string">link_id</argument>-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>-->
+<!--                    <item name="update_url" xsi:type="url" path="mui/index/render"/>-->
+<!--                    <item name="storageConfig" xsi:type="array">-->
+<!--                        <item name="indexField" xsi:type="string">cms_added_links_page_link_id</item>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </argument>-->
+<!--    </dataSource>-->
+    <dataSource name="cms_added_links_page_grid_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">PageGridDataProvider</argument>
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
             <argument name="name" xsi:type="string">cms_added_links_page_grid_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">link_id</argument>
             <argument name="requestFieldName" xsi:type="string">link_id</argument>
@@ -25,7 +42,7 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">cms_added_links_page_link_id</item>
+                        <item name="indexField" xsi:type="string">link_id</item>
                     </item>
                 </item>
             </argument>

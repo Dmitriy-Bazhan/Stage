@@ -9,8 +9,10 @@ class Page extends AbstractDb
 {
     protected function _construct()
     {
-        $this->_init('cms_added_link_relative_page', 'page_id');
+        $this->_init('cms_added_link_relative_page', 'link_id');
     }
+
+
 }
 
 

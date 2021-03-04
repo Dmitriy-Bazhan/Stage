@@ -1,10 +1,11 @@
 <?php
 
-
 namespace StageModules\Links\Model\ResourceModel\Page;
 
-use Magento\Framework\Api\Search\AggregationInterface;
+//use Magento\Eav\Model\Entity\Collection\VersionControl\AbstractCollection;
+
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Magento\Framework\Api\Search\AggregationInterface;
 use StageModules\Links\Model\Page;
 use StageModules\Links\Model\ResourceModel\Page as GridResource;
 
@@ -19,6 +20,8 @@ class Collection extends AbstractCollection
     {
         $this->_init(Page::class, GridResource::class);
     }
+
+
 
     /**
      * @return AggregationInterface
@@ -93,4 +96,5 @@ class Collection extends AbstractCollection
     {
         return $this;
     }
+
 }
