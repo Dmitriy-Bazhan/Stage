@@ -1,12 +1,12 @@
 <?php
 
 
-namespace StageModules\Links\Model\ResourceModel\Link;
+namespace StageModules\Links\Model\ResourceModel\Page;
 
 use Magento\Framework\Api\Search\AggregationInterface;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use StageModules\Links\Model\Link;
-use StageModules\Links\Model\ResourceModel\Link as GridResource;
+use StageModules\Links\Model\Page;
+use StageModules\Links\Model\ResourceModel\Page as GridResource;
 
 class Collection extends AbstractCollection
 {
@@ -17,7 +17,7 @@ class Collection extends AbstractCollection
 
     protected function _construct()
     {
-        $this->_init(Link::class, GridResource::class);
+        $this->_init(Page::class, GridResource::class);
     }
 
     /**
@@ -52,7 +52,7 @@ class Collection extends AbstractCollection
      * Set search criteria.
      *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return $this
+     * @return \StageModules\Links\Model\ResourceModel\Link\Collection
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function setSearchCriteria(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria = null)

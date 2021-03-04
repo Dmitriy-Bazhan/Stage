@@ -1,11 +1,13 @@
 <?php
-namespace StageModules\Links\Model\ResourceModel\Link\Grid;
 
-use StageModules\Links\Model\ResourceModel\Link\Collection as GridCollection;
+
+namespace StageModules\Links\Model\ResourceModel\Page\Grid;
+
+use StageModules\Links\Model\ResourceModel\Page\Collection as GridCollection;
 //use Magento\Framework\Search\AggregationInterface;
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\Document;
-use StageModules\Links\Model\ResourceModel\Link;
+use StageModules\Links\Model\ResourceModel\Page;
 use Magento\Framework\Api\SearchCriteriaInterface;
 
 class Collection extends GridCollection implements SearchResultInterface
@@ -14,7 +16,7 @@ class Collection extends GridCollection implements SearchResultInterface
 
     protected function _construct()
     {
-        $this->_init(Document::class, Link::class);
+        $this->_init(Document::class, Page::class);
     }
 
     public function getAggregations()
@@ -29,6 +31,9 @@ class Collection extends GridCollection implements SearchResultInterface
 
     public function getAllIds($limit = null, $offset = null)
     {
+                echo 'FFFFFF<pre>';
+//        var_dump($this->collection);
+        die();
         return $this->getConnection()->fetchCol($this->_getAllIdsSelect($limit, $offset), $this->_bindParams);
     }
 
@@ -57,7 +62,3 @@ class Collection extends GridCollection implements SearchResultInterface
         return $this;
     }
 }
-
-
-
-

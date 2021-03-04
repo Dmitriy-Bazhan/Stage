@@ -5,11 +5,11 @@ namespace StageModules\Links\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
-class Grid extends AbstractDb
+class Page extends AbstractDb
 {
     protected function _construct()
     {
-        $this->_init('cms_added_link', 'link_id');
+        $this->_init('cms_added_link_relative_page', 'page_id');
     }
 }
 

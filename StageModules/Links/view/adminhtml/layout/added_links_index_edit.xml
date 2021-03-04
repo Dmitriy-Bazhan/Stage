@@ -5,43 +5,8 @@
         <title>Edit Links</title>
     </head>
     <body>
-
         <referenceContainer name="content">
-            <block class="StageModules\Links\Block\Adminhtml\Links\View" name="view"/>
-        </referenceContainer>
-
-        <referenceContainer name="left">
-            <block class="StageModules\Links\Block\Adminhtml\Links\View\Tab\Main" name="main">
-                <block class="StageModules\Links\Block\Adminhtml\Links\View\Tab\Form"
-                       name="cms_added_links.form.container"/>
-                <action method="addTab">
-                    <argument name="name" xsi:type="string">form_link</argument>
-                    <argument name="block" xsi:type="string">cms_added_links.form.container</argument>
-                </action>
-                <block class="StageModules\Links\Block\Adminhtml\Links\View\Tab\Relative"
-                       name="cms_added_links_relative_page_form.form.container"/>
-                <action method="addTab">
-                    <argument name="name" xsi:type="string">relative_page</argument>
-                    <argument name="block" xsi:type="string">cms_added_links_relative_page_form.form.container
-                    </argument>
-                </action>
-            </block>
-        </referenceContainer>
-
-        <referenceBlock name="main">
-            <action method="addTab">
-                <argument name="name" xsi:type="string">test</argument>
-                <argument name="block" xsi:type="string">StageModules\Links\Block\Adminhtml\Links\View\Tab\Test</argument>
-            </action>
-        </referenceBlock>
-
-        <referenceBlock name="cms_added_links.form.container">
             <uiComponent name="cms_added_links_form"/>
-        </referenceBlock>
-
-        <referenceBlock name="cms_added_links_relative_page_form.form.container">
-            <uiComponent name="cms_added_links_relative_page_form"/>
-        </referenceBlock>
-
+        </referenceContainer>
     </body>
 </page>

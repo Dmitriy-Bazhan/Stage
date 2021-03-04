@@ -5,7 +5,6 @@
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">cms_added_links_grid.cms_added_links_grid_data_source
             </item>
-            <!--            <item name="deps" xsi:type="string">cms_added_links_grid_listing.cms_added_links_listing_data_source</item>-->
         </item>
     </argument>
     <settings>

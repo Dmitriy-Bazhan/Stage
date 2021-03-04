@@ -7,39 +7,6 @@ use Magento\Backend\Block\Widget\Tab\TabInterface;
 use Magento\Framework\View\Element\Text\ListText;
 
 
-//class Test extends ListText implements TabInterface
-//{
-//    public function getTabLabel()
-//    {
-//        return __('Test');
-//    }
-//
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function getTabTitle()
-//    {
-//        return __('Test');
-//    }
-//
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function canShowTab()
-//    {
-//        return true;
-//    }
-//
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function isHidden()
-//    {
-//        return false;
-//    }
-//}
-
-
 class Test extends \Magento\Backend\Block\Template implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
     protected $_template = 'tab/test.phtml';
@@ -66,6 +33,11 @@ class Test extends \Magento\Backend\Block\Template implements \Magento\Backend\B
         return true;
     }
     public function isHidden()
+    {
+        return false;
+    }
+
+    public function isAjaxLoaded()
     {
         return false;
     }

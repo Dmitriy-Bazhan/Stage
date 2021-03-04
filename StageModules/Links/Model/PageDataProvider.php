@@ -3,10 +3,9 @@
 namespace StageModules\Links\Model;
 
 use Magento\Framework\App\Request\DataPersistorInterface;
-use StageModules\Links\Model\ResourceModel\Link\CollectionFactory as LinkCollectionFactory;
+use StageModules\Links\Model\ResourceModel\Page\CollectionFactory as PageCollectionFactory;
 
-
-class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class PageDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
     /**
      * @var DataPersistorInterface
@@ -18,7 +17,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param LinkCollectionFactory $collectionFactory
+     * @param PageCollectionFactory $collectionFactory
      * @param array $meta
      * @param array $data
      */
@@ -26,7 +25,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $name,
         $primaryFieldName,
         $requestFieldName,
-        LinkCollectionFactory $collectionFactory,
+        PageCollectionFactory $collectionFactory,
         array $meta = [],
         array $data = []
     )
@@ -46,10 +45,10 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             return $this->loadedData;
         }
         $items = $this->collection->getItems();
-        /** @var \StageModules\Links\Model\Link $link */
-        foreach ($items as $link) {
-            $this->loadedData[$link->getId()]['link'] = $link->getData();
 
+        /** @var \StageModules\Links\Model\Link $page */
+        foreach ($items as $page) {
+            $this->loadedData[$page->getId()]['page'] = $page->getData();
         }
 
 //        echo 'FFFFFF<pre>';
@@ -62,5 +61,4 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
         return [];
     }
-
 }
