@@ -5,40 +5,29 @@ namespace StageModules\Links\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
 use StageModules\Links\Controller\LinksIdRegistry;
-use Magento\Framework\Registry;
+//use Magento\Framework\Registry;
 use Magento\Backend\App\Action\Context;
 
 class Edit extends Action
 {
-    /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $_coreRegistry = null;
+//    protected $_coreRegistry;
 
-    /**
-     * Edit constructor.
-     * @param Context $context
-     * @param \Magento\Framework\Registry $coreRegistry
-     */
     public function __construct(Context $context)
     {
+//        $this->_coreRegistry = $registry;
         parent::__construct($context);
     }
 
     public function execute()
     {
-        $this->_coreRegistry = new Registry();
+//        $model = $this->_objectManager->create(\StageModules\Links\Model\Link::class);
+//        $this->_coreRegistry->register('cms_link', $model);
 
-        $this->initCurrentLink();
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         return $resultPage;
     }
 
-    /**
-     * @return int
-     */
+
     protected function initCurrentLink()
     {
         $linkId = (int)$this->getRequest()->getParam('link_id');

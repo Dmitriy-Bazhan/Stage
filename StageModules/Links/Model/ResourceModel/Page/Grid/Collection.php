@@ -39,9 +39,6 @@ class Collection extends GridCollection implements SearchResultInterface
 
     public function getAllIds($limit = null, $offset = null)
     {
-                echo 'FFFFFF<pre>';
-//        var_dump($this->collection);
-        die();
         return $this->getConnection()->fetchCol($this->_getAllIdsSelect($limit, $offset), $this->_bindParams);
     }
 

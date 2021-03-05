@@ -14,26 +14,77 @@
         </deps>
     </settings>
 
-<!--    <dataSource name="added_links_data_source">-->
-<!--        <argument name="dataProvider" xsi:type="configurableObject">-->
-<!--            <argument name="class" xsi:type="string">PageGridDataProvider</argument>-->
-<!--            <argument name="name" xsi:type="string">cms_added_links_page_grid_data_source</argument>-->
-<!--            <argument name="primaryFieldName" xsi:type="string">link_id</argument>-->
-<!--            <argument name="requestFieldName" xsi:type="string">link_id</argument>-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>-->
-<!--                    <item name="update_url" xsi:type="url" path="mui/index/render"/>-->
-<!--                    <item name="storageConfig" xsi:type="array">-->
-<!--                        <item name="indexField" xsi:type="string">cms_added_links_page_link_id</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </argument>-->
-<!--    </dataSource>-->
+
+    <!--    MODAL WINDOW  -->
+    <modal name="test_modal">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="onCancel" xsi:type="string">actionCancel</item>
+                <item name="options" xsi:type="array">
+                    <item name="buttons" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="text" xsi:type="string">Cancel</item>
+                            <item name="class" xsi:type="string">action-secondary</item>
+                            <item name="actions" xsi:type="array">
+                                <item name="0" xsi:type="string">actionCancel</item>
+                            </item>
+                        </item>
+<!--                        <item name="1" xsi:type="array">-->
+<!--                            <item name="text" xsi:type="string">Clear</item>-->
+<!--                            <item name="class" xsi:type="string">action-secondary</item>-->
+<!--                            <item name="actions" xsi:type="array">-->
+<!--                                <item name="0" xsi:type="array">-->
+<!--                                    <item name="targetName" xsi:type="string">${ $.name }.testField</item>-->
+<!--                                    <item name="actionName" xsi:type="string">clear</item>-->
+<!--                                </item>-->
+<!--                            </item>-->
+<!--                        </item>-->
+                        <item name="1" xsi:type="array">
+                            <item name="text" xsi:type="string">Done</item>
+                            <item name="class" xsi:type="string">action-primary</item>
+                            <item name="actions" xsi:type="array">
+                                <item name="0" xsi:type="string">actionDone</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <insertListing name="insert_page_grid">
+            <settings>
+                <dataLinks>
+                    <exports>false</exports>
+                    <imports>true</imports>
+                </dataLinks>
+                <autoRender>true</autoRender>
+                <selectionsProvider>insert_page_grid.insert_page_grid_data_source.columns.ids</selectionsProvider>
+                <dataScope>insert_page_grid</dataScope>
+                <ns>insert_page_grid</ns>
+            </settings>
+        </insertListing>
+    </modal>
+
+    <!--    OPEN MODAL WINDOW BUTTON   -->
+    <button name="modal_button">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="title" xsi:type="string">Add pages to relations</item>
+                <item name="actions" xsi:type="array">
+                    <item name="0" xsi:type="array">
+                        <item name="targetName" xsi:type="string">${ $.parentName}.test_modal</item>
+                        <item name="actionName" xsi:type="string">openModal</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+    </button>
+
+    <!--    PAGE GRID   -->
     <dataSource name="cms_added_links_page_grid_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="class" xsi:type="string">
+                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+            </argument>
             <argument name="name" xsi:type="string">cms_added_links_page_grid_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">link_id</argument>
             <argument name="requestFieldName" xsi:type="string">link_id</argument>
@@ -49,80 +100,6 @@
         </argument>
     </dataSource>
 
-<!--    <listingToolbar name="listing_top">-->
-<!--        <settings>-->
-<!--            <sticky>true</sticky>-->
-<!--        </settings>-->
-<!--        <bookmark name="bookmarks"/>-->
-<!--        <columnsControls name="columns_controls"/>-->
-<!--        <filterSearch name="fulltext"/>-->
-<!--        <filters name="listing_filters">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="observers" xsi:type="array">-->
-<!--                    <item name="column" xsi:type="string">column</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--            <settings>-->
-<!--                <templates>-->
-<!--                    <filters>-->
-<!--                        <select>-->
-<!--                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>-->
-<!--                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>-->
-<!--                        </select>-->
-<!--                    </filters>-->
-<!--                </templates>-->
-<!--            </settings>-->
-<!--            <filterSelect name="store_id" provider="${ $.parentName }">-->
-<!--                <settings>-->
-<!--                    <captionValue>0</captionValue>-->
-<!--                    <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>-->
-<!--                    <label translate="true">Store View</label>-->
-<!--                    <dataScope>store_id</dataScope>-->
-<!--                    <imports>-->
-<!--                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>-->
-<!--                    </imports>-->
-<!--                </settings>-->
-<!--            </filterSelect>-->
-<!--        </filters>-->
-<!--        <massaction name="listing_massaction">-->
-<!--            <action name="delete">-->
-<!--                <settings>-->
-<!--                    <confirm>-->
-<!--                        <message translate="true">Are you sure you want to delete selected items?</message>-->
-<!--                        <title translate="true">Delete items</title>-->
-<!--                    </confirm>-->
-<!--                    &lt;!&ndash;                    <url path="cms/page/massDelete"/>&ndash;&gt;-->
-<!--                    <type>delete</type>-->
-<!--                    <label translate="true">Delete</label>-->
-<!--                </settings>-->
-<!--            </action>-->
-<!--            <action name="disable">-->
-<!--                <settings>-->
-<!--                    &lt;!&ndash;                    <url path="cms/page/massDisable"/>&ndash;&gt;-->
-<!--                    <type>disable</type>-->
-<!--                    <label translate="true">Disable</label>-->
-<!--                </settings>-->
-<!--            </action>-->
-<!--            <action name="enable">-->
-<!--                <settings>-->
-<!--                    &lt;!&ndash;                    <url path="cms/page/massEnable"/>&ndash;&gt;-->
-<!--                    <type>enable</type>-->
-<!--                    <label translate="true">Enable</label>-->
-<!--                </settings>-->
-<!--            </action>-->
-<!--            <action name="edit">-->
-<!--                <settings>-->
-<!--                    <callback>-->
-<!--                        <target>editSelected</target>-->
-<!--                        <provider>cms_added_links_grid.cms_added_links_grid_data_source</provider>-->
-<!--                    </callback>-->
-<!--                    <type>edit</type>-->
-<!--                    <label translate="true">Edit</label>-->
-<!--                </settings>-->
-<!--            </action>-->
-<!--        </massaction>-->
-<!--        <paging name="listing_paging"/>-->
-<!--    </listingToolbar>-->
 
     <columns name="links_columns">
         <argument name="data" xsi:type="array">
@@ -131,7 +108,7 @@
                     <item name="provider" xsi:type="string">
                         cms_added_links_grid.cms_added_links_grid_data_source.listing_top.bookmarks
                     </item>
-<!--                    <item name="namespace" xsi:type="string">current</item>-->
+                    <!--                    <item name="namespace" xsi:type="string">current</item>-->
                 </item>
                 <item name="childDefaults" xsi:type="array">
                     <item name="controlVisibility" xsi:type="boolean">true</item>
@@ -185,7 +162,6 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">contact</item>
-<!--                    <item name="dataScope" xsi:type="string">email</item>-->
                     <item name="label" xsi:type="string" translate="true">URl</item>
                     <item name="filter" xsi:type="string">text</item>
                     <item name="validation" xsi:type="array">
@@ -195,33 +171,29 @@
             </argument>
         </column>
 
-<!--        &lt;!&ndash; Column Enabled/Disabled &ndash;&gt;-->
-<!--        <column name="enabled">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="visible" xsi:type="boolean">true</item>-->
-<!--                    <item name="dataType" xsi:type="string">text</item>-->
-<!--                    <item name="formElement" xsi:type="string">input</item>-->
-<!--                    <item name="source" xsi:type="string">cms_added_link</item>-->
-<!--                    <item name="dataScope" xsi:type="string">text</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Enabled</item>-->
-<!--                    <item name="filter" xsi:type="string">text</item>-->
-<!--                    <item name="validation" xsi:type="array">-->
-<!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </column>-->
+        <!--        &lt;!&ndash; Column Enabled/Disabled &ndash;&gt;-->
+        <!--        <column name="enabled">-->
+        <!--            <argument name="data" xsi:type="array">-->
+        <!--                <item name="config" xsi:type="array">-->
+        <!--                    <item name="visible" xsi:type="boolean">true</item>-->
+        <!--                    <item name="dataType" xsi:type="string">text</item>-->
+        <!--                    <item name="formElement" xsi:type="string">input</item>-->
+        <!--                    <item name="source" xsi:type="string">cms_added_link</item>-->
+        <!--                    <item name="dataScope" xsi:type="string">text</item>-->
+        <!--                    <item name="label" xsi:type="string" translate="true">Enabled</item>-->
+        <!--                    <item name="filter" xsi:type="string">text</item>-->
+        <!--                    <item name="validation" xsi:type="array">-->
+        <!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
+        <!--                    </item>-->
+        <!--                </item>-->
+        <!--            </argument>-->
+        <!--        </column>-->
 
-<!--        &lt;!&ndash; action columns edit and delete &ndash;&gt;-->
-<!--        <actionsColumn name="actions" class="StageModules\Links\Ui\Components\Listing\Column\LinksActions">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="resizeEnabled" xsi:type="boolean">false</item>-->
-<!--                    <item name="resizeDefaultWidth" xsi:type="string">107</item>-->
-<!--                    <item name="indexField" xsi:type="string">link_id</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </actionsColumn>-->
+        <!--  Remove  -->
+        <actionsColumn name="actions" class="StageModules\Links\Ui\Components\Listing\Column\RemoveRelativePage">
+            <settings>
+                <label translate="true">Action</label>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>

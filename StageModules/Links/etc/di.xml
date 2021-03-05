@@ -67,32 +67,16 @@
             </argument>
         </arguments>
     </type>
-<!--    <virtualType name="PageGridDataProvider"-->
-<!--                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">-->
-<!--        <arguments>-->
-<!--            <argument name="collection" xsi:type="object" shared="false">-->
-<!--                StageModules\Links\Model\ResourceModel\Page\Collection-->
-<!--            </argument>-->
-<!--        </arguments>-->
-<!--    </virtualType>-->
+
+    <!--    CMS PAGES   -->
 
 <!--    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">-->
 <!--        <arguments>-->
 <!--            <argument name="collections" xsi:type="array">-->
-<!--                <item name="cms_added_links_page_grid_data_source" xsi:type="string">-->
-<!--                    StageModules\Links\Model\ResourceModel\Page\Collection-->
-<!--                </item>-->
+<!--                <item name="insert_page_grid_data_source" xsi:type="string">Magento\Cms\Model\ResourceModel\Page\Grid\Collection</item>-->
 <!--            </argument>-->
 <!--        </arguments>-->
 <!--    </type>-->
-
-<!--    <virtualType name="StageModules\Links\Model\ResourceModel\Page\Collection"-->
-<!--                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">-->
-<!--        <arguments>-->
-<!--            <argument name="mainTable" xsi:type="string">cms_added_link_relative_page</argument>-->
-<!--            <argument name="resourceModel" xsi:type="string">StageModules\Links\Model\ResourceModel\Page</argument>-->
-<!--        </arguments>-->
-<!--    </virtualType>-->
 
 </config>
 
