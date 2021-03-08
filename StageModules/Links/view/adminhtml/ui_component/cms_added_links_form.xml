@@ -21,16 +21,17 @@
     </settings>
 
     <dataSource name="cms_added_links_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="submit_url" path="*/*/save" xsi:type="url" />
+            </item>
+        </argument>
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">StageModules\Links\Model\DataProvider</argument>
             <argument name="name" xsi:type="string">cms_added_links_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">link_id</argument>
             <argument name="requestFieldName" xsi:type="string">link_id</argument>
-        </argument>
-        <argument name="data" xsi:type="array">
-            <item name="js_config" xsi:type="array">
-                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
-            </item>
         </argument>
     </dataSource>
 
@@ -82,7 +83,7 @@
         <field name="title" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">cms_added_links_form_data_source</item>
+                    <item name="source" xsi:type="string">link</item>
                 </item>
             </argument>
             <settings>
@@ -93,10 +94,11 @@
                 <label translate="true">Title</label>
             </settings>
         </field>
+
         <field name="url" sortOrder="30" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">cms_added_links_form_data_source</item>
+                    <item name="source" xsi:type="string">link</item>
                 </item>
             </argument>
             <settings>
@@ -116,7 +118,7 @@
             <label translate="true">Relative Pages</label>
             <componentType>fieldset</componentType>
             <additionalClasses>
-                <class name="links_form">true</class>
+                <class name="relative_page">true</class>
             </additionalClasses>
         </settings>
         <insertListing name="cms_added_links_page_grid" >

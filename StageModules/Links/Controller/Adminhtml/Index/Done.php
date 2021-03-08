@@ -3,17 +3,18 @@
 
 namespace StageModules\Links\Controller\Adminhtml\Index;
 
-use Magento\Backend\App\Action;
-use Magento\Framework\App\Action\HttpGetActionInterface;
+
+use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
 
-class RemoveRelativePage extends Action
+class Done extends Action
 {
     public function execute()
     {
-        die('Remove');
+        $post = $this->getRequest()->getPostValue();
+        echo '<pre>';
+        var_dump($post);
+        die("SAVE ALL AND DIE");
         return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-
     }
 }
-

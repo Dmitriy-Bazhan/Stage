@@ -12,7 +12,7 @@
             <button name="add">
                 <url path="*/*/add"/>
                 <class>primary</class>
-                <label translate="true">Add New Links</label>
+                <label translate="true">Add New Link</label>
             </button>
         </buttons>
         <spinner>links_columns</spinner>

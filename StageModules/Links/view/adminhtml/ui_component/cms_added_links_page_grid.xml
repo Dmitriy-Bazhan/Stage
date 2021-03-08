@@ -15,69 +15,59 @@
     </settings>
 
 
-    <!--    MODAL WINDOW  -->
-    <modal name="test_modal">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="onCancel" xsi:type="string">actionCancel</item>
-                <item name="options" xsi:type="array">
-                    <item name="buttons" xsi:type="array">
-                        <item name="0" xsi:type="array">
-                            <item name="text" xsi:type="string">Cancel</item>
-                            <item name="class" xsi:type="string">action-secondary</item>
-                            <item name="actions" xsi:type="array">
-                                <item name="0" xsi:type="string">actionCancel</item>
-                            </item>
-                        </item>
-<!--                        <item name="1" xsi:type="array">-->
-<!--                            <item name="text" xsi:type="string">Clear</item>-->
+<!--    &lt;!&ndash;    MODAL WINDOW  &ndash;&gt;-->
+<!--    <modal name="modal_window_with_pages">-->
+<!--        <argument name="data" xsi:type="array">-->
+<!--            <item name="config" xsi:type="array">-->
+<!--                <item name="onCancel" xsi:type="string">actionCancel</item>-->
+<!--                <item name="options" xsi:type="array">-->
+<!--                    <item name="buttons" xsi:type="array">-->
+<!--                        <item name="0" xsi:type="array">-->
+<!--                            <item name="text" xsi:type="string">Cancel</item>-->
 <!--                            <item name="class" xsi:type="string">action-secondary</item>-->
 <!--                            <item name="actions" xsi:type="array">-->
-<!--                                <item name="0" xsi:type="array">-->
-<!--                                    <item name="targetName" xsi:type="string">${ $.name }.testField</item>-->
-<!--                                    <item name="actionName" xsi:type="string">clear</item>-->
-<!--                                </item>-->
+<!--                                <item name="0" xsi:type="string">actionCancel</item>-->
 <!--                            </item>-->
 <!--                        </item>-->
-                        <item name="1" xsi:type="array">
-                            <item name="text" xsi:type="string">Done</item>
-                            <item name="class" xsi:type="string">action-primary</item>
-                            <item name="actions" xsi:type="array">
-                                <item name="0" xsi:type="string">actionDone</item>
-                            </item>
-                        </item>
-                    </item>
-                </item>
-            </item>
-        </argument>
-        <insertListing name="insert_page_grid">
-            <settings>
-                <dataLinks>
-                    <exports>false</exports>
-                    <imports>true</imports>
-                </dataLinks>
-                <autoRender>true</autoRender>
-                <selectionsProvider>insert_page_grid.insert_page_grid_data_source.columns.ids</selectionsProvider>
-                <dataScope>insert_page_grid</dataScope>
-                <ns>insert_page_grid</ns>
-            </settings>
-        </insertListing>
-    </modal>
+<!--                        <item name="1" xsi:type="array">-->
+<!--                            <item name="text" xsi:type="string">Done</item>-->
+<!--                            <item name="class" xsi:type="string">action-primary</item>-->
+<!--                            <item name="actions" xsi:type="array">-->
+<!--                                <item name="0" xsi:type="string">actionDone</item>-->
+<!--                            </item>-->
+<!--                        </item>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </item>-->
+<!--        </argument>-->
+<!--        <insertListing name="insert_page_grid">-->
+<!--            <settings>-->
+<!--                <dataLinks>-->
+<!--                    <exports>false</exports>-->
+<!--                    <imports>true</imports>-->
+<!--                </dataLinks>-->
+<!--                <autoRender>true</autoRender>-->
+<!--                <selectionsProvider>insert_page_grid.insert_page_grid_data_source.columns.ids</selectionsProvider>-->
+<!--                <dataScope>insert_page_grid</dataScope>-->
+<!--                <ns>insert_page_grid</ns>-->
+<!--            </settings>-->
+<!--        </insertListing>-->
+<!--    </modal>-->
 
-    <!--    OPEN MODAL WINDOW BUTTON   -->
-    <button name="modal_button">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="title" xsi:type="string">Add pages to relations</item>
-                <item name="actions" xsi:type="array">
-                    <item name="0" xsi:type="array">
-                        <item name="targetName" xsi:type="string">${ $.parentName}.test_modal</item>
-                        <item name="actionName" xsi:type="string">openModal</item>
-                    </item>
-                </item>
-            </item>
-        </argument>
-    </button>
+<!--    &lt;!&ndash;    OPEN MODAL WINDOW BUTTON   &ndash;&gt;-->
+<!--    <button name="modal_button">-->
+<!--        <argument name="data" xsi:type="array">-->
+<!--            <item name="config" xsi:type="array">-->
+<!--                <item name="title" xsi:type="string">Add pages to relations</item>-->
+<!--                <item name="actions" xsi:type="array">-->
+<!--                    <item name="0" xsi:type="array">-->
+<!--                        <item name="targetName" xsi:type="string">${ $.parentName}.modal_window_with_pages</item>-->
+<!--                        <item name="actionName" xsi:type="string">openModal</item>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </item>-->
+<!--        </argument>-->
+<!--    </button>-->
 
     <!--    PAGE GRID   -->
     <dataSource name="cms_added_links_page_grid_data_source">
@@ -100,7 +90,6 @@
         </argument>
     </dataSource>
 
-
     <columns name="links_columns">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
@@ -108,7 +97,6 @@
                     <item name="provider" xsi:type="string">
                         cms_added_links_grid.cms_added_links_grid_data_source.listing_top.bookmarks
                     </item>
-                    <!--                    <item name="namespace" xsi:type="string">current</item>-->
                 </item>
                 <item name="childDefaults" xsi:type="array">
                     <item name="controlVisibility" xsi:type="boolean">true</item>

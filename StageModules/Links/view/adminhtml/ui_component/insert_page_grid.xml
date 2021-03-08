@@ -40,6 +40,7 @@
                     </item>
                     <!--                    <item name="namespace" xsi:type="string">current</item>-->
                 </item>
+
                 <item name="childDefaults" xsi:type="array">
                     <item name="controlVisibility" xsi:type="boolean">true</item>
                     <item name="storageConfig" xsi:type="array">

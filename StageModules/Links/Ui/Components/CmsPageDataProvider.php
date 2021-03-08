@@ -50,22 +50,20 @@ class CmsPageDataProvider extends AbstractDataProvider
     {
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $connection = $objectManager->get('Magento\Framework\App\ResourceConnection')->getConnection('\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION');
-        $result = $connection->fetchAll("SELECT page_id FROM cms_added_link_relative_page");
-        $relativePageIds = [];
+
+        $link = 0;
+        if (isset($_SESSION['link_id']) && $_SESSION['link_id'] != null) {
+            $link = $_SESSION['link_id'];
+        }
+
+        $result = $connection->fetchAll("SELECT page_id FROM cms_added_link_relative_page WHERE link_id = " . $link);
+
+        $relativePageIds = [0];
         foreach ($result as $value) {
             $relativePageIds[] = $value['page_id'];
         }
-        $this->getCollection()->addFieldToFilter('page_id', ['nin' => $relativePageIds]);
 
-//        $array = $this->collection->toArray();
-//        foreach ($array['items'] as $key => $item) {
-//            if (in_array($item['page_id'], $relativePageIds)) {
-//                $array['items'][$key]['relative'] = 1;
-//            } else {
-//                $array['items'][$key]['relative'] = 0;
-//            }
-//        }
-//        return $array;
+        $this->getCollection()->addFieldToFilter('page_id', ['nin' => $relativePageIds]);
 
         return $this->collection->toArray();
     }

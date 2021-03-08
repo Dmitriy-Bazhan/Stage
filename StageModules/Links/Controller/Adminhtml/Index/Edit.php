@@ -23,6 +23,7 @@ class Edit extends Action
 //        $model = $this->_objectManager->create(\StageModules\Links\Model\Link::class);
 //        $this->_coreRegistry->register('cms_link', $model);
 
+        $this->initCurrentLink();
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         return $resultPage;
     }

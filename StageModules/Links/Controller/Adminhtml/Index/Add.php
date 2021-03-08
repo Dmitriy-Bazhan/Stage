@@ -11,6 +11,9 @@ class Add extends Action
 {
     public function execute()
     {
+        if (isset($_SESSION['link_id']) && $_SESSION['link_id'] != null) {
+            $_SESSION['link_id'] = null;
+        }
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         return $resultPage;
     }

@@ -4,6 +4,7 @@
 namespace StageModules\Links\Model\ResourceModel\Page\Grid;
 
 use StageModules\Links\Model\ResourceModel\Page\Collection as GridCollection;
+
 //use Magento\Framework\Search\AggregationInterface;
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\Document;
@@ -22,8 +23,11 @@ class Collection extends GridCollection implements SearchResultInterface
     protected function _initSelect()
     {
         parent::_initSelect();
-        $link = $_SESSION['link_id'];
-        $this->getSelect()->where("link_id = $link");
+        if (isset($_SESSION['link_id']) && $_SESSION['link_id'] != null) {
+            $this->getSelect()->where('link_id = ' . $_SESSION['link_id']);
+        } else {
+            $this->getSelect()->where('link_id = 0');
+        }
         return $this;
     }
 
