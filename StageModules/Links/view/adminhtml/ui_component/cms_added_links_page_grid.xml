@@ -15,59 +15,59 @@
     </settings>
 
 
-<!--    &lt;!&ndash;    MODAL WINDOW  &ndash;&gt;-->
-<!--    <modal name="modal_window_with_pages">-->
-<!--        <argument name="data" xsi:type="array">-->
-<!--            <item name="config" xsi:type="array">-->
-<!--                <item name="onCancel" xsi:type="string">actionCancel</item>-->
-<!--                <item name="options" xsi:type="array">-->
-<!--                    <item name="buttons" xsi:type="array">-->
-<!--                        <item name="0" xsi:type="array">-->
-<!--                            <item name="text" xsi:type="string">Cancel</item>-->
-<!--                            <item name="class" xsi:type="string">action-secondary</item>-->
-<!--                            <item name="actions" xsi:type="array">-->
-<!--                                <item name="0" xsi:type="string">actionCancel</item>-->
-<!--                            </item>-->
-<!--                        </item>-->
-<!--                        <item name="1" xsi:type="array">-->
-<!--                            <item name="text" xsi:type="string">Done</item>-->
-<!--                            <item name="class" xsi:type="string">action-primary</item>-->
-<!--                            <item name="actions" xsi:type="array">-->
-<!--                                <item name="0" xsi:type="string">actionDone</item>-->
-<!--                            </item>-->
-<!--                        </item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </item>-->
-<!--        </argument>-->
-<!--        <insertListing name="insert_page_grid">-->
-<!--            <settings>-->
-<!--                <dataLinks>-->
-<!--                    <exports>false</exports>-->
-<!--                    <imports>true</imports>-->
-<!--                </dataLinks>-->
-<!--                <autoRender>true</autoRender>-->
-<!--                <selectionsProvider>insert_page_grid.insert_page_grid_data_source.columns.ids</selectionsProvider>-->
-<!--                <dataScope>insert_page_grid</dataScope>-->
-<!--                <ns>insert_page_grid</ns>-->
-<!--            </settings>-->
-<!--        </insertListing>-->
-<!--    </modal>-->
+    <!--    MODAL WINDOW  -->
+    <modal name="modal_window_with_pages">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="onCancel" xsi:type="string">actionCancel</item>
+                <item name="options" xsi:type="array">
+                    <item name="buttons" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="text" xsi:type="string">Cancel</item>
+                            <item name="class" xsi:type="string">action-secondary</item>
+                            <item name="actions" xsi:type="array">
+                                <item name="0" xsi:type="string">actionCancel</item>
+                            </item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="text" xsi:type="string">Done</item>
+                            <item name="class" xsi:type="string">action-primary</item>
+                            <item name="actions" xsi:type="array">
+                                <item name="0" xsi:type="string">actionDone</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <insertListing name="insert_page_grid">
+            <settings>
+                <dataLinks>
+                    <exports>false</exports>
+                    <imports>true</imports>
+                </dataLinks>
+                <autoRender>true</autoRender>
+                <selectionsProvider>insert_page_grid.insert_page_grid_data_source.columns.ids</selectionsProvider>
+                <dataScope>insert_page_grid</dataScope>
+                <ns>insert_page_grid</ns>
+            </settings>
+        </insertListing>
+    </modal>
 
-<!--    &lt;!&ndash;    OPEN MODAL WINDOW BUTTON   &ndash;&gt;-->
-<!--    <button name="modal_button">-->
-<!--        <argument name="data" xsi:type="array">-->
-<!--            <item name="config" xsi:type="array">-->
-<!--                <item name="title" xsi:type="string">Add pages to relations</item>-->
-<!--                <item name="actions" xsi:type="array">-->
-<!--                    <item name="0" xsi:type="array">-->
-<!--                        <item name="targetName" xsi:type="string">${ $.parentName}.modal_window_with_pages</item>-->
-<!--                        <item name="actionName" xsi:type="string">openModal</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </item>-->
-<!--        </argument>-->
-<!--    </button>-->
+    <!--    OPEN MODAL WINDOW BUTTON   -->
+    <button name="modal_button">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="title" xsi:type="string">Add pages to relations</item>
+                <item name="actions" xsi:type="array">
+                    <item name="0" xsi:type="array">
+                        <item name="targetName" xsi:type="string">${ $.parentName}.modal_window_with_pages</item>
+                        <item name="actionName" xsi:type="string">openModal</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+    </button>
 
     <!--    PAGE GRID   -->
     <dataSource name="cms_added_links_page_grid_data_source">
@@ -76,14 +76,15 @@
                 Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
             </argument>
             <argument name="name" xsi:type="string">cms_added_links_page_grid_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">link_id</argument>
-            <argument name="requestFieldName" xsi:type="string">link_id</argument>
+            <argument name="primaryFieldName" xsi:type="string">page_id</argument>
+            <argument name="requestFieldName" xsi:type="string">page_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="submit_url" path="*/*/save" xsi:type="url" />
                     <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">link_id</item>
+                        <item name="indexField" xsi:type="string">page_id</item>
                     </item>
                 </item>
             </argument>
@@ -114,7 +115,7 @@
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">link_id</item>
+                    <item name="indexField" xsi:type="string">page_id</item>
                 </item>
             </argument>
         </selectionsColumn>

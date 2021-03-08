@@ -111,7 +111,6 @@
         </field>
     </fieldset>
 
-
     <fieldset name="relative_page">
         <settings>
             <collapsible>false</collapsible>
