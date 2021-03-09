@@ -1,42 +1,56 @@
 <?php
 
-
 namespace StageModules\Links\Controller\Adminhtml\Index;
 
-
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
+use \Magento\Framework\App\ObjectManager;
 
 class Save extends Action
 {
+    public function __construct(Context $context)
+    {
+        parent::__construct($context);
+    }
+
     public function execute()
     {
         $post = $this->getRequest()->getPostValue();
+//        $params = $this->getRequest()->getParams();
+//        echo 'PARAMS : <br>';
+//        var_dump($params);
+//        echo 'POST : <br>';
 //        var_dump($post);
 //        die();
-        $resultRedirect = $this->resultRedirectFactory->create();
 
+        $resultRedirect = $this->resultRedirectFactory->create();
+        $path = '*/*/edit';
         if ($post) {
-            $id = isset($post['link']['link_id']) ? $post['link']['link_id'] : false;
-            $title = $post['link']['title'];
-            $url = $post['link']['url'];
-            $enabled = $post['link']['enabled'];
-            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-            $connection = $objectManager->get('Magento\Framework\App\ResourceConnection')
-                                        ->getConnection('\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION');
-            if ($id) {
-                $query = 'UPDATE cms_added_link SET title = \'' . $title . '\', url = \'' . $url . '\' ,enabled = \'' . $enabled . '\' WHERE link_id = ' . $id;
-                $connection->query($query);
-                return $resultRedirect->setPath('*/*/edit', ['link_id' => $id]);
-            } else {
-                $query = 'INSERT INTO cms_added_link(title, url, enabled) VALUES ( \'' . $title . '\' , \'' . $url . '\', \'' . $enabled . '\')';
-                $connection->query($query);
-                $query = 'SELECT link_id FROM cms_added_link ORDER BY link_id DESC LIMIT 1';
-                $id = $connection->fetchAll($query);
-                return $resultRedirect->setPath('*/*/edit', ['link_id' => $id[0]['link_id']]);
+            try {
+
+                $rowData = $this->_objectManager->create('StageModules\Links\Model\Link');
+                $rowData->setData($post['link']);
+
+                if (isset($post['link']['link_id'])) {
+                    $rowData->setEntityId($post['link']['link_id']);
+                    $path = $path . '/link_id/' . $post['link']['link_id'] . '/';
+                } else {
+                    $objectManager = ObjectManager::getInstance();
+                    $connection = $objectManager->get('Magento\Framework\App\ResourceConnection')
+                        ->getConnection('\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION');
+                    $query = 'SELECT link_id FROM cms_added_link ORDER BY link_id DESC LIMIT 1';
+                    $id = $connection->fetchAll($query);
+                    $path = $path . '/link_id/' . ++$id[0]['link_id'] . '/';
+                }
+                $rowData->save();
+
+                $this->messageManager->addSuccess(__('Link has been successfully saved.'));
+            } catch (Exception $e) {
+                $this->messageManager->addError(__($e->getMessage()));
             }
         }
-        return $resultRedirect->setPath('*/*/index');
+        return $resultRedirect->setPath($path);
     }
 }

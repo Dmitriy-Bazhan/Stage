@@ -70,7 +70,7 @@
     </button>
 
     <!--    PAGE GRID   -->
-    <dataSource name="cms_added_links_page_grid_data_source">
+    <dataSource name="cms_added_links_page_grid_data_source"  component="Magento_Ui/js/grid/provider">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">
                 Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
@@ -126,6 +126,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">textRange</item>
                     <item name="sorting" xsi:type="string">asc</item>
+                    <item name="formElement" xsi:type="string">input</item>
                     <item name="label" xsi:type="string" translate="true">LINK_ID</item>
                 </item>
             </argument>
@@ -137,6 +138,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">textRange</item>
                     <item name="sorting" xsi:type="string">asc</item>
+                    <item name="formElement" xsi:type="string">input</item>
                     <item name="label" xsi:type="string" translate="true">PAGE_ID</item>
                     <item name="visible" xsi:type="boolean">true</item>
                 </item>
@@ -159,24 +161,6 @@
                 </item>
             </argument>
         </column>
-
-        <!--        &lt;!&ndash; Column Enabled/Disabled &ndash;&gt;-->
-        <!--        <column name="enabled">-->
-        <!--            <argument name="data" xsi:type="array">-->
-        <!--                <item name="config" xsi:type="array">-->
-        <!--                    <item name="visible" xsi:type="boolean">true</item>-->
-        <!--                    <item name="dataType" xsi:type="string">text</item>-->
-        <!--                    <item name="formElement" xsi:type="string">input</item>-->
-        <!--                    <item name="source" xsi:type="string">cms_added_link</item>-->
-        <!--                    <item name="dataScope" xsi:type="string">text</item>-->
-        <!--                    <item name="label" xsi:type="string" translate="true">Enabled</item>-->
-        <!--                    <item name="filter" xsi:type="string">text</item>-->
-        <!--                    <item name="validation" xsi:type="array">-->
-        <!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
-        <!--                    </item>-->
-        <!--                </item>-->
-        <!--            </argument>-->
-        <!--        </column>-->
 
         <!--  Remove  -->
         <actionsColumn name="actions" class="StageModules\Links\Ui\Components\Listing\Column\RemoveRelativePage">

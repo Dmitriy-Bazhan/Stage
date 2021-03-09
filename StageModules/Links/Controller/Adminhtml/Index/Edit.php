@@ -10,18 +10,14 @@ use Magento\Backend\App\Action\Context;
 
 class Edit extends Action
 {
-//    protected $_coreRegistry;
-
-    public function __construct(Context $context)
+    public function __construct(Context $context, \Magento\Framework\Registry $coreRegistry)
     {
-//        $this->_coreRegistry = $registry;
         parent::__construct($context);
+        $this->_coreRegistry = $coreRegistry;
     }
 
     public function execute()
     {
-//        $model = $this->_objectManager->create(\StageModules\Links\Model\Link::class);
-//        $this->_coreRegistry->register('cms_link', $model);
 
         $this->initCurrentLink();
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);

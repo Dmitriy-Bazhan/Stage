@@ -24,7 +24,7 @@
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
-                <item name="submit_url" path="*/*/save" xsi:type="url" />
+                <item name="submit_url" path="*/*/save" xsi:type="url"/>
             </item>
         </argument>
         <argument name="dataProvider" xsi:type="configurableObject">
@@ -111,7 +111,7 @@
         </field>
     </fieldset>
 
-    <fieldset name="relative_page">
+    <fieldset name="cms_added_links_page_grid">
         <settings>
             <collapsible>false</collapsible>
             <label translate="true">Relative Pages</label>
@@ -120,14 +120,16 @@
                 <class name="relative_page">true</class>
             </additionalClasses>
         </settings>
-        <insertListing name="cms_added_links_page_grid" >
+
+        <insertListing>
             <settings>
                 <dataLinks>
                     <exports>false</exports>
                     <imports>true</imports>
                 </dataLinks>
                 <autoRender>true</autoRender>
-                <selectionsProvider>cms_added_links_page_grid.cms_added_links_page_grid_data_source.columns.ids</selectionsProvider>
+                <selectionsProvider>cms_added_links_page_grid.cms_added_links_page_grid_data_source.columns.ids
+                </selectionsProvider>
                 <dataScope>cms_added_links_page_grid</dataScope>
                 <ns>cms_added_links_page_grid</ns>
             </settings>
